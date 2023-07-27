@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hand Gesture Recognition</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #0066cc;
+            text-align: center;
+        }
+        form {
+            text-align: center;
+            margin-top: 30px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+        .submit-button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hand Gesture Recognition</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="video" accept="video/*">
+        <button type="submit" class="submit-button">Submit</button>
+    </form>
+    {% if clips_info %}
+        <h2>Video Clips Information</h2>
+        <table>
+            <tr>
+                <th>Gesture</th>
+                <th>Start Frame</th>
+                <th>End Frame</th>
+                <th>Start Time (s)</th>
+                <th>End Time (s)</th>
+            </tr>
+            {% for clip in clips_info %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ clip[0] }}</td>
+                <td>{{ clip[1] }}</td>
+                <td>{{ clip[2] }}</td>
+                <td>{{ clip[3] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>
